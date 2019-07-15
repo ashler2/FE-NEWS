@@ -5,13 +5,20 @@ import Heading from "./Components/Heading";
 import NavBar from "./Components/NavBar";
 import { Main } from "./Components/Main";
 import Footer from "./Components/Footer";
+import { Router } from "@reach/router";
+import FilterBar from "./Components/FilterBar";
+import Topics from "./Components/Topics";
 
 function App() {
   return (
     <div className="App">
       <Heading />
       <NavBar />
-      <Main className="Main" />
+
+      <Router>
+        <Main path="/" className="Main" />
+        <Topics path="/topics" />
+      </Router>
       <Footer />
     </div>
   );

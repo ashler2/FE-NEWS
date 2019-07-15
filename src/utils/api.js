@@ -5,4 +5,7 @@ const fetchArticles = async () => {
   return await axios.get(`${URL}/articles`);
 };
 
-export { fetchArticles };
+const fetchTopics = async () => {
+  return await axios.get(`${URL}/topics`);
+};
+export { fetchArticles, fetchTopics };

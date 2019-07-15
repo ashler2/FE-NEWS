@@ -3,14 +3,18 @@ import React from "react";
 import { fetchArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import "./CSS/ArticleCard.css";
+import FilterBar from "./FilterBar";
 export class Main extends React.Component {
   state = {
-    articles: []
+    articles: [],
+    articleCount: 0
   };
   render() {
-    const articles = this.state.articles;
+    const { articles, articleCount } = this.state;
     return (
       <div>
+        <FilterBar />
+        <p>Article count: {articleCount}</p>
         {articles.map(article => {
           return (
             <ArticleCard
@@ -23,11 +27,13 @@ export class Main extends React.Component {
       </div>
     );
   }
+
   componentDidMount = () => {
     fetchArticles().then(res => {
+      console.log(res.data);
       const articles = res.data.articles;
-      this.setState({ articles });
-      console.log(this.state.articles);
+      const articleCount = res.data.total_count;
+      this.setState({ articles, articleCount });
     });
   };
 }

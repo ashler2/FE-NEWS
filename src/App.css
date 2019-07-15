@@ -1,10 +1,11 @@
 .App {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 0.5fr 5fr 0.5fr;
+  grid-template-rows: 1fr 0.5fr 0.5fr 5fr 0.5fr;
   grid-template-areas:
     "Heading"
     "NavBar"
+    "FilterBar"
     "Main"
     "Footer";
   height: 100vh;
@@ -23,6 +24,8 @@
   top: 0;
   background: olive;
   height: 65px;
+  display: flex;
+  justify-content: space-evenly;
 }
 .Main {
   grid-area: Main;
@@ -31,4 +34,8 @@
 .Footer {
   grid-area: Footer;
   border: 1px solid green;
+}
+.FilterBar {
+  grid-area: FilterBar;
+  border: 1px solid orangered;
 }
