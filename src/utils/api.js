@@ -8,4 +8,8 @@ const fetchArticles = async () => {
 const fetchTopics = async () => {
   return await axios.get(`${URL}/topics`);
 };
-export { fetchArticles, fetchTopics };
+
+const fetchArticle = async id => {
+  return await axios.get(`${URL}/articles/${id}`);
+};
+export { fetchArticles, fetchTopics, fetchArticle };

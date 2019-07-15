@@ -30,7 +30,6 @@ export class Main extends React.Component {
 
   componentDidMount = () => {
     fetchArticles().then(res => {
-      console.log(res.data);
       const articles = res.data.articles;
       const articleCount = res.data.total_count;
       this.setState({ articles, articleCount });

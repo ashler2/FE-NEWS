@@ -6,9 +6,9 @@ import NavBar from "./Components/NavBar";
 import { Main } from "./Components/Main";
 import Footer from "./Components/Footer";
 import { Router } from "@reach/router";
-import FilterBar from "./Components/FilterBar";
-import Topics from "./Components/Topics";
 
+import Topics from "./Components/Topics";
+import Article from "./Components/Article";
 function App() {
   return (
     <div className="App">
@@ -18,6 +18,7 @@ function App() {
       <Router>
         <Main path="/" className="Main" />
         <Topics path="/topics" />
+        <Article path="/articles/:article_id" />
       </Router>
       <Footer />
     </div>
