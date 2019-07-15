@@ -27,6 +27,7 @@ export class Main extends React.Component {
     fetchArticles().then(res => {
       const articles = res.data.articles;
       this.setState({ articles });
+      console.log(this.state.articles);
     });
   };
 }

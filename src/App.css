@@ -18,6 +18,11 @@
 .NavBar {
   grid-area: NavBar;
   border: 1px solid red;
+  /* Sticky not working, getting stuck inside own grid area, need work around to get outside that */
+  position: sticky;
+  top: 0;
+  background: olive;
+  height: 65px;
 }
 .Main {
   grid-area: Main;
