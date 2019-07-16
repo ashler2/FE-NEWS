@@ -9,7 +9,7 @@ export class Main extends React.Component {
     articles: [],
     articleCount: 0,
     height: 2485,
-    p: 1
+    p: 0
   };
   render() {
     const { articles, articleCount } = this.state;
@@ -31,9 +31,7 @@ export class Main extends React.Component {
   }
 
   componentDidMount = () => {
-    document.addEventListener("scroll", () => {
-      this.bottomScroll(this.state);
-    });
+    document.addEventListener("scroll", this.scrolling);
 
     fetchArticles().then(res => {
       const articles = res.data.articles;
@@ -41,9 +39,18 @@ export class Main extends React.Component {
       this.setState({ articles, articleCount });
     });
   };
+  scrolling = () => {
+    this.bottomScroll();
+  };
+
   bottomScroll() {
     const offset = window.pageYOffset;
     const height = this.state.height;
+    let articles = this.state.articles;
+
+    if (articles.length + 1 === this.state.articleCount) {
+      document.removeEventListener("scroll", this.scrolling);
+    }
 
     if (offset > height) {
       this.setState({
@@ -51,19 +58,16 @@ export class Main extends React.Component {
         height: this.state.height + 2485
       });
 
-      fetchArticles(this.state.p)
-        .then(res => {
-          let data = res.data.articles;
-          let articles = this.state.articles;
-          data.forEach(item => {
-            articles.push(item);
-          });
-          this.setState({
-            articles
-          });
-          // how to check its actually error 404
-        })
-        .catch(document.removeEventListener("scroll", this.bottomScroll));
+      fetchArticles(this.state.p).then(res => {
+        let data = res.data.articles;
+        data.forEach(item => {
+          articles.push(item);
+        });
+        this.setState({
+          articles
+        });
+        // how to check its actually error 404
+      });
     }
   }
 }

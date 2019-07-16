@@ -9,7 +9,10 @@ class Topics extends React.Component {
     return (
       <div>
         <div>
-          <h1> search bar</h1>
+          <form>
+            <label>Search Topics: </label>
+            <input type="text" />
+          </form>
         </div>
         {topics.map(topic => {
           return (
@@ -19,6 +22,7 @@ class Topics extends React.Component {
             </div>
           );
         })}
+        <button> Add Topic: </button>
       </div>
     );
   }

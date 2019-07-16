@@ -3,7 +3,6 @@ const URL = `https://ash-news-backend.herokuapp.com/api`;
 
 const fetchArticles = async pa => {
   let value = pa;
-  console.log(value, "v");
 
   return await axios.get(`${URL}/articles/`, {
     params: {
