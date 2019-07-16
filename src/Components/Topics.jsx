@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchTopics } from "../utils/api";
+import { Link } from "@reach/router";
 class Topics extends React.Component {
   state = {
     topics: []
@@ -16,10 +17,12 @@ class Topics extends React.Component {
         </div>
         {topics.map(topic => {
           return (
-            <div key={topic.slug}>
-              <p>Topic: {topic.slug}</p>
-              <p>Description: {topic.description}</p>
-            </div>
+            <Link to={`/topics/${topic.slug}`} key={topic.slug}>
+              <div>
+                <p>Topic: {topic.slug}</p>
+                <p>Description: {topic.description}</p>
+              </div>
+            </Link>
           );
         })}
         <button> Add Topic: </button>

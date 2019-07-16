@@ -4,9 +4,9 @@ const NavBar = () => {
   return (
     <div className="NavBar">
       <Link to="/"> Articles</Link>
-      <Link to="/topics"> topics</Link>
-      <Link to="/users"> users</Link>
-      <Link to="/postArticle"> write Article</Link>
+      <Link to="/topics"> Topics</Link>
+      <Link to="/users"> Users</Link>
+      <Link to="/postArticle"> Write Article</Link>
     </div>
   );
 };

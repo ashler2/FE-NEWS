@@ -1,12 +1,14 @@
 import axios from "axios";
 const URL = `https://ash-news-backend.herokuapp.com/api`;
 
-const fetchArticles = async pa => {
-  let value = pa;
+const fetchArticles = async (p, topic) => {
+  let value = p;
 
+  // console.log(pa, "hello");
   return await axios.get(`${URL}/articles/`, {
     params: {
-      p: value
+      p: value,
+      topic
     }
   });
 };
@@ -18,4 +20,8 @@ const fetchTopics = async () => {
 const fetchArticle = async id => {
   return await axios.get(`${URL}/articles/${id}`);
 };
-export { fetchArticles, fetchTopics, fetchArticle };
+
+const fetchComments = async id => {
+  return await axios.get(`${URL}/articles/${id}/comments`);
+};
+export { fetchArticles, fetchTopics, fetchArticle, fetchComments };

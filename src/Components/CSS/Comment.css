@@ -1,0 +1,32 @@
+.CommentCard {
+  display: grid;
+  grid-template-columns: 0.5fr 3.5fr 0.5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 8px;
+  grid-row-gap: 0px;
+  grid-template-areas:
+    "VoteUp Body Author"
+    "Votes Body Posted"
+    "VoteDown Body Posted";
+  border: 1px black solid;
+  margin: 8px;
+  padding: 4px;
+}
+.VoteUp {
+  grid-area: VoteUp;
+}
+.Body {
+  grid-area: Body;
+}
+.CommentVotes {
+  grid-area: Votes;
+}
+.CommentAuthor {
+  grid-area: Author;
+}
+.Posted {
+  grid-area: Posted;
+}
+.VoteDown {
+  grid-area: VoteDown;
+}

@@ -1,11 +1,11 @@
 import React from "react";
 import { fetchArticle } from "../utils/api";
+import Comments from "./Comments";
 class Article extends React.Component {
   state = {
     article: {}
   };
   render() {
-    console.log(this.state.article);
     const {
       title,
       topic,
@@ -23,6 +23,8 @@ class Article extends React.Component {
         <p> {created_At}</p>
 
         <p>Total Comments: {comment_count}</p>
+        <p>Comments:</p>
+        <Comments id={this.props.article_id} />
       </div>
     );
   }

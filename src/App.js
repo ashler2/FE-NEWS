@@ -6,13 +6,13 @@ import NavBar from "./Components/NavBar";
 import { Main } from "./Components/Main";
 import Footer from "./Components/Footer";
 import { Router } from "@reach/router";
-
+import "./App.css";
 import Topics from "./Components/Topics";
 import Article from "./Components/Article";
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <main className="App">
         <Heading />
         <NavBar />
 
@@ -20,9 +20,10 @@ class App extends React.Component {
           <Main path="/" className="Main" />
           <Topics path="/topics" />
           <Article path="/articles/:article_id" />
+          <Main path="/topics/:topic" />
         </Router>
         <Footer />
-      </div>
+      </main>
     );
   }
 }

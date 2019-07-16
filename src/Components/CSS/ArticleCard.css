@@ -1,26 +1,47 @@
 .Card {
   display: grid;
   border: 3px solid black;
-  margin: 8px;
-  padding: 3px;
+  margin: 4px;
+  padding-top: 10px;
+  padding: 2px;
   grid-template-columns: 0.5fr 2fr 0.5fr;
   grid-template-rows: 0.4fr 2fr 0.5fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   grid-template-areas:
-    "Date . Votes"
+    "Date Topic UpVote"
     "Title Title Votes"
-    "Author Comments Votes";
+    "Author Comments DownVote";
   justify-content: center;
-  height: 20em;
+  height: 180px;
   font-size: 14px;
   text-align: center;
   color: black;
   text-decoration: none;
+  background: #3f4445;
+  color: white;
+  margin-top: 10px;
 }
-
+.UpVote {
+  grid-area: UpVote;
+  z-index: 9;
+}
+.DownVote {
+  grid-area: DownVote;
+}
+.Topic {
+  grid-area: Topic;
+  margin: 1px;
+}
+.Link {
+  text-decoration: none;
+}
 .Date {
   grid-area: Date;
+  height: 25px;
+  width: 10em;
+  text-decoration: none;
+  margin: 1px;
   border: 1px solid blue;
 }
 .Votes {
