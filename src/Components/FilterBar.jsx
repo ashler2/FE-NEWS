@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "@reach/router";
+
 import "../App.css";
 const FilterBar = () => {
   return (

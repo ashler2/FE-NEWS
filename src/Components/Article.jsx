@@ -17,7 +17,12 @@ class Article extends React.Component {
     return (
       <div>
         <h1>{title}</h1>
-        <p />
+        <p>{body}</p>
+        <p> {votes}</p>
+        <p>Topic: {topic}</p>
+        <p> {created_At}</p>
+
+        <p>Total Comments: {comment_count}</p>
       </div>
     );
   }

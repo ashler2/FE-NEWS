@@ -1,6 +1,6 @@
 import React from "react";
 import "./CSS/ArticleCard.css";
-import { timePosted } from "../utils/utils";
+
 import moment from "moment";
 import { Link } from "@reach/router";
 const ArticleCard = props => {

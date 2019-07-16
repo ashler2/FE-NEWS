@@ -9,20 +9,22 @@ import { Router } from "@reach/router";
 
 import Topics from "./Components/Topics";
 import Article from "./Components/Article";
-function App() {
-  return (
-    <div className="App">
-      <Heading />
-      <NavBar />
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Heading />
+        <NavBar />
 
-      <Router>
-        <Main path="/" className="Main" />
-        <Topics path="/topics" />
-        <Article path="/articles/:article_id" />
-      </Router>
-      <Footer />
-    </div>
-  );
+        <Router>
+          <Main path="/" className="Main" />
+          <Topics path="/topics" />
+          <Article path="/articles/:article_id" />
+        </Router>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
