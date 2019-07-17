@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const URL = `https://ash-news-backend.herokuapp.com/api`;
 
 const fetchArticles = async (p, topic, sort) => {
@@ -11,7 +12,6 @@ const fetchArticles = async (p, topic, sort) => {
     VotesDesc: { a: "votes", b: "Desc" },
     VotesAsc: { a: "votes", b: "ASC" }
   };
-  console.log(ref[sort]);
 
   let { a, b } = ref[sort];
   return await axios.get(`${URL}/articles/`, {
@@ -35,4 +35,18 @@ const fetchArticle = async id => {
 const fetchComments = async id => {
   return await axios.get(`${URL}/articles/${id}/comments`);
 };
-export { fetchArticles, fetchTopics, fetchArticle, fetchComments };
+
+const addComment = async (id, body, username) => {
+  return await axios.post(`${URL}/articles/${id}/comments`, { username, body });
+};
+const deleteComment = async id => {
+  return await axios.delete(`${URL}/comments/${id}`);
+};
+export {
+  fetchArticles,
+  fetchTopics,
+  fetchArticle,
+  fetchComments,
+  addComment,
+  deleteComment
+};

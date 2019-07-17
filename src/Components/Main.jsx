@@ -14,7 +14,6 @@ export class Main extends React.Component {
     sort_by: "DateDesc"
   };
   render() {
-    console.log(this.state.articles);
     const { articles, articleCount } = this.state;
 
     return (
@@ -51,7 +50,7 @@ export class Main extends React.Component {
     this.bottomScroll();
   };
   setSortBy = async sort_by => {
-    await this.setState({ sort_by });
+    await this.setState({ sort_by, p: 0 });
     fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
       res => {
         const articles = res.data.articles;

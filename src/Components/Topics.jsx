@@ -17,7 +17,11 @@ class Topics extends React.Component {
         </div>
         {topics.map(topic => {
           return (
-            <Link to={`/topics/${topic.slug}`} key={topic.slug}>
+            <Link
+              to={`/topics/${topic.slug}`}
+              key={topic.slug}
+              className="topicCard"
+            >
               <div>
                 <p>Topic: {topic.slug}</p>
                 <p>Description: {topic.description}</p>
