@@ -1,6 +1,6 @@
 .Card {
   display: grid;
-  border: 3px solid black;
+  border: 2px solid #c3073f;
   margin: 4px;
   padding-top: 10px;
   padding: 2px;
@@ -18,8 +18,8 @@
   text-align: center;
   color: black;
   text-decoration: none;
-  background: #3f4445;
-  color: white;
+  background: #1a1a1d;
+  color: #950740;
   margin-top: 10px;
 }
 .UpVote {
@@ -62,9 +62,9 @@
   text-align: center;
   margin: 2vh;
   text-decoration: none;
-  color: white;
+  color: #c3073f;
   font-size: 4vh;
-  border: 1px solid grey;
+
   display: flex;
   justify-content: center;
   align-items: center;

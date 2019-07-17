@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchTopics } from "../utils/api";
 import { Link } from "@reach/router";
+import "./CSS/topic.css";
 class Topics extends React.Component {
   state = {
     topics: []
@@ -15,21 +16,18 @@ class Topics extends React.Component {
             <input type="text" />
           </form>
         </div>
-        {topics.map(topic => {
-          return (
-            <Link
-              to={`/topics/${topic.slug}`}
-              key={topic.slug}
-              className="topicCard"
-            >
-              <div>
-                <p>Topic: {topic.slug}</p>
-                <p>Description: {topic.description}</p>
+        <div className="topicCard">
+          {topics.map(topic => {
+            return (
+              <div className="topicCard" key={topic.slug}>
+                <Link to={`/topics/${topic.slug}`}>
+                  <p>Topic: {topic.slug}</p>
+                  <p>Description: {topic.description}</p>
+                </Link>
               </div>
-            </Link>
-          );
-        })}
-        <button> Add Topic: </button>
+            );
+          })}
+        </div>
       </div>
     );
   }

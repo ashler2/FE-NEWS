@@ -1,0 +1,24 @@
+.topicCard {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  flex-wrap: wrap;
+  justify-content: row;
+  flex-direction: row;
+
+  margin: 3px;
+}
+.topicCard {
+  height: 160px;
+  width: 150px;
+  background: #1a1a1d;
+  margin: 3px;
+  text-align: center;
+  text-decoration: none;
+  color: #950740;
+}
+.topicCard p link {
+  text-decoration: none;
+  color: #950740;
+}

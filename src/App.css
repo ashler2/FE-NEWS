@@ -12,8 +12,8 @@
   width: 100vw;
 }
 :root {
-  background: grey;
-  color: white;
+  background: #222225;
+  color: #950740;
 }
 .eeeeeeeee {
   background: #312f2f;
@@ -25,21 +25,21 @@
 }
 .Heading {
   grid-area: Heading;
-  background: #202829;
-  color: white;
-  border: 1px solid blue;
+  background: #1a1a1d;
+  color: #c3073f;
+
   text-align: center;
 }
 .NavBar {
   grid-area: NavBar;
-  border: 1px solid red;
+
   /* Sticky not working, getting stuck inside own grid area, need work around to get outside that */
   position: sticky;
   top: 0;
-  background: #202829;
-  color: white;
+  background: #1a1a1d;
+  color: #c3073f;
   height: 2.2em;
-
+  z-index: 9;
   display: flex;
   justify-content: space-evenly;
 }
@@ -47,7 +47,7 @@
   text-decoration: none;
   width: 100px;
   text-align: center;
-  color: white;
+  color: #950740;
   padding: 7px;
 }
 .NavBar a:hover {
@@ -56,16 +56,17 @@
 }
 .Main {
   grid-area: Main;
-  border: 1px solid yellow;
+  color: #950740;
 }
 .Footer {
   grid-area: Footer;
+  background: #1a1a1d;
   border: 1px solid green;
 }
 .FilterBar {
   grid-area: FilterBar;
-
-  border: 1px solid orangered;
+  background: #1c1c1f;
+  color: #950740;
   display: flex;
   height: 5vh;
   flex-direction: row;
@@ -79,6 +80,8 @@
   margin: 3px;
   position: relative;
   border: 1px white;
+  background: #27272b;
+  color: #950740;
   height: 3vh;
   z-index: 1;
 }
