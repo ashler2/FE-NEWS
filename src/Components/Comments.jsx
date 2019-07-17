@@ -2,6 +2,7 @@ import React from "react";
 import { fetchComments, deleteComment } from "../utils/api";
 import moment from "moment";
 import "./CSS/Comment.css";
+import Votes from "./Votes";
 class Comments extends React.Component {
   state = {
     comments: []
@@ -17,7 +18,12 @@ class Comments extends React.Component {
             <div key={comment_id} className="CommentCard">
               <p className="CommentAuthor">{author}</p>
               <p className="Body">{body}</p>
-              <p className="CommentVotes"> Votes: {votes}</p>
+              <Votes
+                className="CommentVotes"
+                votes={votes}
+                section={"comments"}
+                id={comment_id}
+              />
               <p className="Posted"> Posted: {moment(created_at).fromNow()}</p>
               <button
                 className="Delete"
@@ -27,8 +33,6 @@ class Comments extends React.Component {
               >
                 delete
               </button>
-              <button className="VoteUp" />
-              <button className="VoteDown" />
             </div>
           );
         })}

@@ -4,11 +4,13 @@ import { fetchArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import "./CSS/ArticleCard.css";
 import FilterBar from "./FilterBar";
+import { throttle } from "lodash";
+
 export class Main extends React.Component {
   state = {
     articles: [],
     articleCount: 0,
-    height: 1447,
+    height: 778,
     p: 0,
     topic: "",
     sort_by: "DateDesc"
@@ -34,7 +36,7 @@ export class Main extends React.Component {
   }
 
   componentDidMount = () => {
-    document.addEventListener("scroll", this.scrolling);
+    document.addEventListener("scroll", throttle(this.scrolling, 1000));
     fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
       res => {
         const articles = res.data.articles;
@@ -67,20 +69,47 @@ export class Main extends React.Component {
     }
   }
   bottomScroll() {
-    const offset = window.pageYOffset;
-    const height = this.state.height;
+    // const offset = window.pageYOffset;
+    // const height = this.state.height;
+    // console.log(offset);
+    // if (articles.length + 1 >= this.state.articleCount) {
+    //   document.removeEventListener("scroll", this.scrolling);
+    // }
+
+    // if (offset > height) {
+    //   this.setState({
+    //     p: this.state.p + 1,
+    //     height: this.state.height + 1447
+    //   });
+
+    // fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
+    //   res => {
+    //     let data = res.data.articles;
+    //     data.forEach(item => {
+    //       articles.push(item);
+    //     });
+    //     this.setState({
+    //       articles
+    //     });
+    //       // how to check its actually error 404
+    //     }
+    //   );
+    // }
+    const { innerHeight, scrollY } = window;
+    const { clientHeight } = document.body;
+    const distanceFromBottomToTrigger = this.state.height;
+    const atBottom =
+      innerHeight + scrollY >= clientHeight + distanceFromBottomToTrigger;
     let articles = this.state.articles;
-    console.log(offset);
+    //lodash
     if (articles.length + 1 >= this.state.articleCount) {
       document.removeEventListener("scroll", this.scrolling);
     }
-
-    if (offset > height) {
+    if (atBottom) {
       this.setState({
         p: this.state.p + 1,
-        height: this.state.height + 1447
+        height: this.state.height + 778
       });
-
       fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
         res => {
           let data = res.data.articles;
@@ -90,9 +119,19 @@ export class Main extends React.Component {
           this.setState({
             articles
           });
-          // how to check its actually error 404
         }
       );
     }
+    console.log(
+      clientHeight,
+      //   innerHeight,
+      //   scrollY,
+      //   distanceFromBottomToTrigger,
+      atBottom
+    );
+    console.log(
+      innerHeight + scrollY,
+      clientHeight - distanceFromBottomToTrigger
+    );
   }
 }

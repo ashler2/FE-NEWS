@@ -3,6 +3,7 @@ import "./CSS/ArticleCard.css";
 
 import moment from "moment";
 import { Link } from "@reach/router";
+import Votes from "./Votes";
 const ArticleCard = props => {
   const {
     title,
@@ -15,18 +16,23 @@ const ArticleCard = props => {
   } = props.article;
 
   return (
-    <Link to={`/articles/${article_id}`} className="Link">
-      <div className="Card">
-        <h1 className="Title"> {title}</h1>
-        <p className="Author"> Author: {author}</p>
-        <p className="Topic">Topic: {topic} </p>
-        <p className="Comments">comments: {comment_count}</p>
-        <p className="Votes">Votes: {votes}</p>
-        <button className="UpVote">UP</button>
-        <button className="DownVote">Down</button>
-        <p className="Date">Posted: {moment(created_at).fromNow()}</p>
-      </div>
-    </Link>
+    <div className="Card">
+      <Link to={`/articles/${article_id}`} className="Title">
+        {title}
+      </Link>
+
+      {/* <h1 className="Title"> {title}</h1> */}
+      <p className="Author"> Author: {author}</p>
+      <p className="Topic">Topic: {topic} </p>
+      <p className="Comments">comments: {comment_count}</p>
+      <Votes
+        votes={votes}
+        id={article_id}
+        className="Votes"
+        section={"articles"}
+      />
+      <p className="Date">Posted: {moment(created_at).fromNow()}</p>
+    </div>
   );
 };
 

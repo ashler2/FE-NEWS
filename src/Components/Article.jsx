@@ -4,6 +4,7 @@ import Comments from "./Comments";
 import { addComment } from "../utils/api";
 import CommentInput from "./CommentInput";
 import moment from "moment";
+import Votes from "./Votes";
 
 class Article extends React.Component {
   state = {
@@ -39,10 +40,8 @@ class Article extends React.Component {
           <div className="CommentCard">
             <p className="CommentAuthor">{this.state.username}</p>
             <p className="Body">{this.state.fakeBody}</p>
-            <p className="CommentVotes"> Votes: 0</p>
+            <Votes votes={votes} />
             <p className="Posted"> Posted: {moment(new Date()).fromNow()}</p>
-            <button className="VoteUp" />
-            <button className="VoteDown" />
           </div>
         )}
         <Comments

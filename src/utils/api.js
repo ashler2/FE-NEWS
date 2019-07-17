@@ -42,11 +42,16 @@ const addComment = async (id, body, username) => {
 const deleteComment = async id => {
   return await axios.delete(`${URL}/comments/${id}`);
 };
+
+const patchVote = async (id, inc_votes, section) => {
+  return await axios.patch(`${URL}/${section}/${id}`, { inc_votes });
+};
 export {
   fetchArticles,
   fetchTopics,
   fetchArticle,
   fetchComments,
   addComment,
-  deleteComment
+  deleteComment,
+  patchVote
 };

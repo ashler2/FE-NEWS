@@ -9,9 +9,9 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   grid-template-areas:
-    "Date Topic UpVote"
+    "Date Topic Votes"
     "Title Title Votes"
-    "Author Comments DownVote";
+    "Author Comments Votes";
   justify-content: center;
   height: 180px;
   font-size: 14px;
