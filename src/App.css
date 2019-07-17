@@ -15,10 +15,17 @@
   background: grey;
   color: white;
 }
-
+.eeeeeeeee {
+  background: #312f2f;
+  /* 312F2F
+  FCF7FF
+  B3B5BB
+  C4CAD0
+  878C8F */
+}
 .Heading {
   grid-area: Heading;
-  background: #312f2f;
+  background: #202829;
   color: white;
   border: 1px solid blue;
   text-align: center;
@@ -57,7 +64,21 @@
 }
 .FilterBar {
   grid-area: FilterBar;
+
   border: 1px solid orangered;
   display: flex;
+  height: 5vh;
+  flex-direction: row;
   justify-content: center;
+  align-content: space-around;
+  width: 100%;
+}
+.FilterBar select {
+  list-style-type: none;
+  padding: 0px;
+  margin: 3px;
+  position: relative;
+  border: 1px white;
+  height: 3vh;
+  z-index: 1;
 }

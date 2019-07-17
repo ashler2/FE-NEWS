@@ -4,8 +4,8 @@
   margin: 4px;
   padding-top: 10px;
   padding: 2px;
-  grid-template-columns: 0.5fr 2fr 0.5fr;
-  grid-template-rows: 0.4fr 2fr 0.5fr;
+  grid-template-columns: 0.5fr 2fr 100px;
+  grid-template-rows: 0.4fr 2fr 0.4fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   grid-template-areas:
@@ -31,18 +31,27 @@
 }
 .Topic {
   grid-area: Topic;
-  margin: 1px;
+  margin: 0px;
+  font-size: 1em;
+  width: auto;
+  height: 25px;
+  display: flex;
+  justify-content: center;
 }
 .Link {
   text-decoration: none;
 }
 .Date {
   grid-area: Date;
+  display: flex;
   height: 25px;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
   width: 10em;
   text-decoration: none;
-  margin: 1px;
-  border: 1px solid blue;
+  margin: 0px;
+  font-size: 1em;
 }
 .Votes {
   grid-area: Votes;
@@ -50,9 +59,19 @@
 }
 .Title {
   grid-area: Title;
-  border: 1px solid cyan;
+  text-align: center;
+  margin: 2vh;
+  text-decoration: none;
+  color: white;
+  font-size: 4vh;
+  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .Author {
+  height: 25px;
+
   grid-area: Author;
   border: 1px solid green;
 }

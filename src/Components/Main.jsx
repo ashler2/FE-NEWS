@@ -69,32 +69,6 @@ export class Main extends React.Component {
     }
   }
   bottomScroll() {
-    // const offset = window.pageYOffset;
-    // const height = this.state.height;
-    // console.log(offset);
-    // if (articles.length + 1 >= this.state.articleCount) {
-    //   document.removeEventListener("scroll", this.scrolling);
-    // }
-
-    // if (offset > height) {
-    //   this.setState({
-    //     p: this.state.p + 1,
-    //     height: this.state.height + 1447
-    //   });
-
-    // fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
-    //   res => {
-    //     let data = res.data.articles;
-    //     data.forEach(item => {
-    //       articles.push(item);
-    //     });
-    //     this.setState({
-    //       articles
-    //     });
-    //       // how to check its actually error 404
-    //     }
-    //   );
-    // }
     const { innerHeight, scrollY } = window;
     const { clientHeight } = document.body;
     const distanceFromBottomToTrigger = this.state.height;
@@ -102,7 +76,9 @@ export class Main extends React.Component {
       innerHeight + scrollY >= clientHeight + distanceFromBottomToTrigger;
     let articles = this.state.articles;
     //lodash
-    if (articles.length + 1 >= this.state.articleCount) {
+    console.log(articles.length, this.state.articleCount);
+    if (articles.length + 1 === this.state.articleCount) {
+      console.log("he");
       document.removeEventListener("scroll", this.scrolling);
     }
     if (atBottom) {
@@ -122,16 +98,5 @@ export class Main extends React.Component {
         }
       );
     }
-    console.log(
-      clientHeight,
-      //   innerHeight,
-      //   scrollY,
-      //   distanceFromBottomToTrigger,
-      atBottom
-    );
-    console.log(
-      innerHeight + scrollY,
-      clientHeight - distanceFromBottomToTrigger
-    );
   }
 }

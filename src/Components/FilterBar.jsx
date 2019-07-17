@@ -8,12 +8,14 @@ class FilterBar extends React.Component {
   render() {
     return (
       <div className="FilterBar">
-        <label>Articles per Page: </label>
+        <form>
+          <label>Articles per Page: </label>
 
-        <select>
-          <option>10</option>
-        </select>
-        <span />
+          <select>
+            <option>10</option>
+          </select>
+        </form>
+
         <form>
           <label htmlFor="SortBy"> Sort By:</label>
           <select
