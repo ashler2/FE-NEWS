@@ -10,7 +10,8 @@ export class Main extends React.Component {
     articleCount: 0,
     height: 1447,
     p: 0,
-    topic: ""
+    topic: "",
+    sort_by: "DateDesc"
   };
   render() {
     console.log(this.state.articles);
@@ -18,7 +19,7 @@ export class Main extends React.Component {
 
     return (
       <div>
-        <FilterBar />
+        <FilterBar setSortBy={this.setSortBy} />
         <p>Article count: {articleCount}</p>
         {articles.map(article => {
           return (
@@ -35,11 +36,13 @@ export class Main extends React.Component {
 
   componentDidMount = () => {
     document.addEventListener("scroll", this.scrolling);
-    fetchArticles(this.state.p, this.props.topic).then(res => {
-      const articles = res.data.articles;
-      const articleCount = res.data.total_count;
-      this.setState({ articles, articleCount });
-    });
+    fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
+      res => {
+        const articles = res.data.articles;
+        const articleCount = res.data.total_count;
+        this.setState({ articles, articleCount });
+      }
+    );
   };
   componentWillUnmount() {
     document.removeEventListener("scroll", this.scrolling);
@@ -47,9 +50,21 @@ export class Main extends React.Component {
   scrolling = () => {
     this.bottomScroll();
   };
+  setSortBy = async sort_by => {
+    await this.setState({ sort_by });
+    fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
+      res => {
+        const articles = res.data.articles;
+        const articleCount = res.data.total_count;
+        this.setState({ articles, articleCount });
+      }
+    );
+  };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.articles !== this.state.articles) {
+  componentWillUpdate(props, prevState) {
+    if (prevState.articles !== this.state.articles) {
+      console.log("hi");
+      console.log(prevState.articles, this.state.articles);
     }
   }
   bottomScroll() {
@@ -67,16 +82,18 @@ export class Main extends React.Component {
         height: this.state.height + 1447
       });
 
-      fetchArticles(this.state.p, this.props.topic).then(res => {
-        let data = res.data.articles;
-        data.forEach(item => {
-          articles.push(item);
-        });
-        this.setState({
-          articles
-        });
-        // how to check its actually error 404
-      });
+      fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
+        res => {
+          let data = res.data.articles;
+          data.forEach(item => {
+            articles.push(item);
+          });
+          this.setState({
+            articles
+          });
+          // how to check its actually error 404
+        }
+      );
     }
   }
 }

@@ -1,14 +1,25 @@
 import axios from "axios";
 const URL = `https://ash-news-backend.herokuapp.com/api`;
 
-const fetchArticles = async (p, topic) => {
+const fetchArticles = async (p, topic, sort) => {
   let value = p;
+  const ref = {
+    DateDesc: { a: "created_at", b: "DESC" },
+    DateAsc: { a: "created_at", b: "Asc" },
+    CCASC: { a: "comment_count", b: "ASC" },
+    CCDESC: { a: "comment_count", b: "DESC" },
+    VotesDesc: { a: "votes", b: "Desc" },
+    VotesAsc: { a: "votes", b: "ASC" }
+  };
+  console.log(ref[sort]);
 
-  // console.log(pa, "hello");
+  let { a, b } = ref[sort];
   return await axios.get(`${URL}/articles/`, {
     params: {
       p: value,
-      topic
+      topic,
+      sort_by: a,
+      order: b
     }
   });
 };
