@@ -42,11 +42,16 @@ class Comments extends React.Component {
     });
   }
   sendDelete = (id, index) => {
-    const comments = this.state.comments;
-    comments.splice(index, 1);
-    this.setState({ comments });
-    this.props.commentGone();
-    deleteComment(id);
+    if (this.state.comments[index].author === this.props.username) {
+      deleteComment(id);
+
+      const comments = this.state.comments;
+      comments.splice(index, 1);
+      this.setState({ comments });
+      this.props.commentGone();
+    } else {
+      alert("you don't have the permission to delete other peoples comments");
+    }
   };
 }
 

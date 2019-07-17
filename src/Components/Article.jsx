@@ -45,7 +45,11 @@ class Article extends React.Component {
             <button className="VoteDown" />
           </div>
         )}
-        <Comments id={this.props.article_id} commentGone={this.commentGone} />
+        <Comments
+          id={this.props.article_id}
+          commentGone={this.commentGone}
+          username={this.state.username}
+        />
         <div>
           <h3>Add Comments: </h3>
           <h4>Username: {this.state.username}</h4>
