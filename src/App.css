@@ -68,8 +68,16 @@
 }
 .Footer {
   grid-area: Footer;
-  background: #1a1a1d;
-  border: 1px solid green;
+  background: #0b0c10;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.Footer img {
+  height: 75px;
+  width: 75px;
+  cursor: pointer;
 }
 .FilterBar {
   grid-area: FilterBar;

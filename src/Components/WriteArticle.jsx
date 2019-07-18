@@ -44,7 +44,8 @@ class WriteArticle extends Component {
   //     this.state.username
   //   );
   //   this.setState({
-  //     body: ""
+  //     article: "",
+  //     topic: ""
   //   });
   // };
 }
