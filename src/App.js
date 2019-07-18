@@ -9,6 +9,7 @@ import { Router } from "@reach/router";
 import "./App.css";
 import Topics from "./Components/Topics";
 import Article from "./Components/Article";
+import WriteArticle from "./Components/WriteArticle";
 class App extends React.Component {
   render() {
     return (
@@ -21,6 +22,7 @@ class App extends React.Component {
           <Topics path="/topics" className="topicPage" />
           <Article path="/articles/:article_id" />
           <Main path="/topics/:topic" />
+          <WriteArticle path="/postArticle" />
         </Router>
         <Footer />
       </main>

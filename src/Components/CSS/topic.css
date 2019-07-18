@@ -8,7 +8,7 @@
     ". TopicSearch ."
     "topicSection topicSection topicSection";
   height: 100vh;
-  width: 100vw;
+  width: auto;
   text-decoration: none;
 }
 .TopicSearch {
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: row;
   height: 10vh;
-  width: 100vw;
+
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: row;
@@ -49,6 +49,7 @@
 
 .topicTitle {
   text-decoration: none;
+  color: #66fcf1;
 }
 .topicDescription {
   text-decoration: none;
