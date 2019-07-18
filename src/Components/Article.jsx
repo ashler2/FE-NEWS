@@ -5,7 +5,7 @@ import { addComment } from "../utils/api";
 import CommentInput from "./CommentInput";
 import moment from "moment";
 import Votes from "./Votes";
-
+import "./CSS/Article.css";
 class Article extends React.Component {
   state = {
     article: {},
@@ -16,43 +16,62 @@ class Article extends React.Component {
     fakeBody: ""
   };
   render() {
-    console.log(this.state);
+    console.log(this.state.article);
 
     const {
       title,
       topic,
-      created_At,
+      created_at,
       comment_count,
       body,
-      votes
+      votes,
+      article_id,
+      author
     } = this.state.article;
+    console.log(author);
     return (
-      <div>
-        <h1>{title}</h1>
-        <p>{body}</p>
-        <p> {votes}</p>
-        <p>Topic: {topic}</p>
-        <p> {created_At}</p>
-
-        <p>Total Comments: {comment_count}</p>
-        <p>Comments:</p>
-        {this.state.posted && (
-          <div className="CommentCard">
-            <p className="CommentAuthor">{this.state.username}</p>
-            <p className="Body">{this.state.fakeBody}</p>
-            <Votes votes={votes} />
-            <p className="Posted"> Posted: {moment(new Date()).fromNow()}</p>
+      <div className="ArticlePage">
+        <div className="articleSection">
+          <h1 className="articleTitle">{title}</h1>
+          <p className="articleMain">{body}</p>
+          <div className="articleVotes">
+            <Votes
+              className="articleVotes"
+              votes={votes}
+              section={"articles"}
+              id={article_id}
+            />
           </div>
-        )}
-        <Comments
-          id={this.props.article_id}
-          commentGone={this.commentGone}
-          username={this.state.username}
-        />
-        <div>
-          <h3>Add Comments: </h3>
-          <h4>Username: {this.state.username}</h4>
+          <p className="articleAuthor">Author: {author}</p>
+          <p className="articleTopic">Topic: {topic}</p>
+          <p className="articleDate">
+            {" "}
+            Posted: {moment(created_at).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+          </p>
+        </div>
+        <div className="commentSection">
+          <p>Total Comments: {comment_count}</p>
+          <p>Comments:</p>
+          {this.state.posted && (
+            <div className="CommentCard">
+              <p className="CommentAuthor"> Author: {this.state.username}</p>
+              <p className="Body">Comment: {this.state.fakeBody}</p>
+              <Votes votes={votes} />
+              <p className="Posted"> Posted: {moment(new Date()).fromNow()}</p>
+            </div>
+          )}
+          <Comments
+            className="CommentCard"
+            id={this.props.article_id}
+            commentGone={this.commentGone}
+            username={this.state.username}
+          />
+        </div>
+        <div className="inputSection">
+          <h3 className="addComment">Add Comments: </h3>
+          <h4 className="commentUsername">Username: {this.state.username}</h4>
           <CommentInput
+            className="commentInputBox"
             body={this.state.body}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}

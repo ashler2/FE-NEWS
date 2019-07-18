@@ -10,10 +10,12 @@
     "Footer";
   height: 100vh;
   width: 100vw;
+  font-family: "Work Sans", sans-serif;
 }
 :root {
   background: #334658;
   color: #66fcf1;
+  font-family: "Bonbon", cursive;
 }
 .eeeeeeeee {
   background: #312f2f;
@@ -27,6 +29,7 @@
   grid-area: Heading;
   background: #0b0c10;
   color: #66fcf1;
+  font-family: "Work Sans", sans-serif;
 
   text-align: center;
 }

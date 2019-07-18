@@ -1,0 +1,88 @@
+.ArticlePage {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 500px 2fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas:
+    "articleSection"
+    "commentSection"
+    "inputSection";
+  margin: 2px;
+}
+.articleSection {
+  grid-area: articleSection;
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  grid-template-rows: 0.5fr 0.1fr auto;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: auto;
+  grid-template-areas:
+    "articleTitle articleTitle articleVotes"
+    "articleDate articleAuthor articleTopic"
+    "articleMain articleMain articleMain";
+  background: #1f2833;
+  margin: 10px;
+  color: #45a29e;
+}
+.articleTitle {
+  grid-area: articleTitle;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  color: #66fcf1;
+  font-size: 1.4em;
+}
+.articleDate {
+  grid-area: articleDate;
+  font-size: 0.9em;
+}
+.articleAuthor {
+  grid-area: articleAuthor;
+  font-size: 0.9em;
+}
+.articleVotes {
+  margin: 4px;
+
+  grid-area: articleVotes;
+}
+.commentCount {
+  grid-area: commentCount;
+}
+.articleMain {
+  grid-area: articleMain;
+  color: #66fcf1;
+}
+.articleTopic {
+  grid-area: articleTopic;
+  font-size: 0.9em;
+}
+.commentSection {
+  grid-area: commentSection;
+  overflow-y: scroll;
+}
+.inputSection {
+  grid-area: inputSection;
+  background: #1f2833;
+  margin: 8px;
+  padding-left: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 3fr;
+  grid-template-areas:
+    "addComment commentUsername"
+    "commentInputBox commentInputBox";
+}
+.addComment {
+  grid-area: addComment;
+}
+.commentUsername {
+  grid-area: commentUsername;
+}
+.commentInputBox {
+  grid-area: commentInputBox;
+}

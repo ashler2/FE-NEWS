@@ -16,8 +16,8 @@ class Comments extends React.Component {
 
           return (
             <div key={comment_id} className="CommentCard">
-              <p className="CommentAuthor">{author}</p>
-              <p className="Body">{body}</p>
+              <p className="CommentAuthor">Author: {author}</p>
+              <p className="Body">Comment: {body}</p>
               <Votes
                 className="CommentVotes"
                 votes={votes}

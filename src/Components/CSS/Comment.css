@@ -11,21 +11,26 @@
   border: 1px black solid;
   margin: 8px;
   padding: 4px;
+  background: #1f2833;
 }
 .VoteUp {
   grid-area: VoteUp;
 }
 .Body {
   grid-area: Body;
+  font-size: 1.3em;
 }
 .CommentVotes {
   grid-area: Votes;
+  font-size: 1em;
 }
 .CommentAuthor {
   grid-area: Author;
+  font-size: 1em;
 }
 .Posted {
   grid-area: Posted;
+  font-size: 0.9em;
 }
 .VoteDown {
   grid-area: VoteDown;

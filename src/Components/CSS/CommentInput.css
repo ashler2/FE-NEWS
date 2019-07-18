@@ -1,0 +1,26 @@
+.commentInput {
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr 1fr;
+  grid-template-areas:
+    "commentLabel ."
+    "InputPart InputPart"
+    "SubmitComment SubmitComment";
+}
+.commentLabel {
+  grid-area: commentLabel;
+}
+
+.InputPart {
+  grid-area: InputPart;
+  height: 100px;
+  width: 97%;
+}
+.SubmitComment {
+  grid-area: SubmitComment;
+  height: 50px;
+  width: 100px;
+  margin: 10px;
+  position: relative;
+  left: 25em;
+  right: 25em;
+}
