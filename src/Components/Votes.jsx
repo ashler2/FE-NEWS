@@ -30,7 +30,6 @@ export class Votes extends React.Component {
   }
   //Possible refactor into one - Take into account the if up needs to - 2 ect
   upVote = () => {
-    console.log(this.props);
     patchVote(this.props.id, 1, this.props.section);
     this.setState({ voteChange: 1 });
   };
