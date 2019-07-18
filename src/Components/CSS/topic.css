@@ -1,24 +1,58 @@
-.topicCard {
-  display: flex;
-  flex-direction: row;
+.topicPage {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 9fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas:
+    ". TopicSearch ."
+    "topicSection topicSection topicSection";
   height: 100vh;
   width: 100vw;
-  flex-wrap: wrap;
-  justify-content: row;
+  text-decoration: none;
+}
+.TopicSearch {
+  grid-area: TopicSearch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topicSection {
+  grid-area: topicSection;
+  display: flex;
   flex-direction: row;
+  height: 10vh;
+  width: 100vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
 
-  margin: 3px;
+  margin: 10px;
+  padding: 10px;
 }
 .topicCard {
   height: 160px;
-  width: 150px;
-  background: #1a1a1d;
+  width: 10em;
+  background: #1f2833;
   margin: 3px;
+  padding: 4px;
   text-align: center;
   text-decoration: none;
-  color: #950740;
+  color: #45a29e;
+  min-width: 129px;
 }
-.topicCard p link {
+.topicCard {
   text-decoration: none;
-  color: #950740;
+  color: #45a29e;
+}
+
+.topicTitle {
+  text-decoration: none;
+}
+.topicDescription {
+  text-decoration: none;
+}
+.topicLink {
+  text-decoration: none;
 }

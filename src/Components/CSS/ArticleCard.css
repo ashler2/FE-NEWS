@@ -55,7 +55,6 @@
 }
 .Votes {
   grid-area: Votes;
-  border: 1px solid red;
 }
 .Title {
   grid-area: Title;
@@ -73,9 +72,7 @@
   height: 25px;
 
   grid-area: Author;
-  border: 1px solid green;
 }
 .Comments {
   grid-area: Comments;
-  border: 1px solid black;
 }

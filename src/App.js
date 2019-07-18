@@ -18,7 +18,7 @@ class App extends React.Component {
 
         <Router>
           <Main path="/" className="Main" />
-          <Topics path="/topics" />
+          <Topics path="/topics" className="topicPage" />
           <Article path="/articles/:article_id" />
           <Main path="/topics/:topic" />
         </Router>

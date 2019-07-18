@@ -4,29 +4,47 @@ import { Link } from "@reach/router";
 import "./CSS/topic.css";
 class Topics extends React.Component {
   state = {
-    topics: []
+    topics: [],
+    search: ""
   };
   render() {
+    console.log(this.state.search);
     const topics = this.state.topics;
     return (
-      <div>
-        <div>
-          <form>
-            <label>Search Topics: </label>
-            <input type="text" />
-          </form>
+      <div className="topicPage">
+        <div className="TopicSearch">
+          <label>Search Topics: </label>
+          <input onChange={this.handleChange} id="search" type="text" />
         </div>
-        <div className="topicCard">
-          {topics.map(topic => {
-            return (
-              <div className="topicCard" key={topic.slug}>
-                <Link to={`/topics/${topic.slug}`}>
-                  <p>Topic: {topic.slug}</p>
-                  <p>Description: {topic.description}</p>
-                </Link>
-              </div>
-            );
-          })}
+        <div className="topicSection">
+          {topics
+            .filter(item => {
+              console.log(item);
+              if (
+                item.slug
+                  .toLowerCase()
+                  .includes(this.state.search.toLowerCase()) ||
+                item.description
+                  .toLowerCase()
+                  .includes(this.state.search.toLowerCase())
+              ) {
+                return item;
+              }
+            })
+            .map(topic => {
+              return (
+                <div className="" key={topic.slug}>
+                  <Link className="topicLink" to={`/topics/${topic.slug}`}>
+                    <div className="topicCard">
+                      <p className="topicTitle">Topic: {topic.slug}</p>
+                      <p className="topicDescription">
+                        Description: {topic.description}
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
         </div>
       </div>
     );
@@ -37,6 +55,27 @@ class Topics extends React.Component {
       this.setState({ topics });
     });
   };
+
+  handleChange = event => {
+    event.preventDefault();
+
+    const key = event.target.id;
+    const value = event.target.value;
+
+    this.setState({ [key]: value });
+  };
+  // handleSubmit = async event => {
+  //   event.preventDefault();
+  //   await this.setState({ posted: true });
+  //   await addComment(
+  //     this.props.article_id,
+  //     this.state.body,
+  //     this.state.username
+  //   );
+  //   this.setState({
+  //     body: ""
+  //   });
+  // };
 }
 
 export default Topics;
