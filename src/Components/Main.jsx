@@ -62,12 +62,6 @@ export class Main extends React.Component {
     );
   };
 
-  componentWillUpdate(props, prevState) {
-    if (prevState.articles !== this.state.articles) {
-      console.log("hi");
-      console.log(prevState.articles, this.state.articles);
-    }
-  }
   bottomScroll() {
     const { innerHeight, scrollY } = window;
     const { clientHeight } = document.body;
@@ -76,9 +70,8 @@ export class Main extends React.Component {
       innerHeight + scrollY >= clientHeight + distanceFromBottomToTrigger;
     let articles = this.state.articles;
     //lodash
-    console.log(articles.length, this.state.articleCount);
+
     if (articles.length + 1 === this.state.articleCount) {
-      console.log("he");
       document.removeEventListener("scroll", this.scrolling);
     }
     if (atBottom) {
