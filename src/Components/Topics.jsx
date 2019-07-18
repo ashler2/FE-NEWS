@@ -8,7 +8,6 @@ class Topics extends React.Component {
     search: ""
   };
   render() {
-    console.log(this.state.search);
     const topics = this.state.topics;
     return (
       <div className="topicPage">
@@ -19,7 +18,6 @@ class Topics extends React.Component {
         <div className="topicSection">
           {topics
             .filter(item => {
-              console.log(item);
               if (
                 item.slug
                   .toLowerCase()
