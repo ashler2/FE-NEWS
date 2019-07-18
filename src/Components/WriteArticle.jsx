@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class WriteArticle extends Component {
   state = {
+    topic: "",
     article: ""
   };
   render() {
@@ -10,9 +11,19 @@ class WriteArticle extends Component {
         <form>
           <h1>Pretend this works for now :(</h1>
           <label>Topic: </label>
-          <input placeholder="topic" required />
+          <input
+            onChange={this.handleChange}
+            id="topic"
+            placeholder="topic"
+            required
+          />
           <label>Article: </label>
-          <input placeholder="Your Article Here" required />
+          <input
+            onChange={this.handleChange}
+            id="article"
+            placeholder="Your Article Here"
+            required
+          />
           <button> Publish your Article</button>
         </form>
       </div>

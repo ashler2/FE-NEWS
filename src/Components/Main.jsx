@@ -36,7 +36,7 @@ export class Main extends React.Component {
   }
 
   componentDidMount = () => {
-    document.addEventListener("scroll", throttle(this.scrolling, 1000));
+    document.addEventListener("scroll", this.throttleScroll);
 
     fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
       res => {
@@ -47,11 +47,13 @@ export class Main extends React.Component {
     );
   };
   componentWillUnmount() {
-    document.removeEventListener("scroll", this.scrolling);
+    document.removeEventListener("scroll", this.throttleScroll);
   }
   scrolling = () => {
     this.bottomScroll();
   };
+  throttleScroll = throttle(this.scrolling, 2000);
+
   setSortBy = async sort_by => {
     await this.setState({ sort_by, p: 0 });
     fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
@@ -71,9 +73,9 @@ export class Main extends React.Component {
       innerHeight + scrollY >= clientHeight + distanceFromBottomToTrigger;
     let articles = this.state.articles;
     //lodash
-
+    console.log(articles.length);
     if (articles.length + 1 === this.state.articleCount) {
-      document.removeEventListener("scroll", this.scrolling);
+      document.removeEventListener("scroll", this.throttleScroll);
     }
     if (atBottom) {
       this.setState({
