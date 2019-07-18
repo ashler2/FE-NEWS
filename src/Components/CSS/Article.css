@@ -56,6 +56,7 @@
 .articleMain {
   grid-area: articleMain;
   color: #66fcf1;
+  margin: 10px;
 }
 .articleTopic {
   grid-area: articleTopic;

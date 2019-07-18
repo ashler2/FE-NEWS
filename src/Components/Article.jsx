@@ -16,7 +16,7 @@ class Article extends React.Component {
     fakeBody: ""
   };
   render() {
-    console.log(this.state.article);
+    window.scrollTo(0, 0);
 
     const {
       title,
@@ -28,7 +28,7 @@ class Article extends React.Component {
       article_id,
       author
     } = this.state.article;
-    console.log(author);
+
     return (
       <div className="ArticlePage">
         <div className="articleSection">

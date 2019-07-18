@@ -9,6 +9,8 @@ class Topics extends React.Component {
   };
   render() {
     const topics = this.state.topics;
+    window.scrollTo(0, 0);
+
     return (
       <div className="topicPage">
         <div className="TopicSearch">
@@ -62,18 +64,6 @@ class Topics extends React.Component {
 
     this.setState({ [key]: value });
   };
-  // handleSubmit = async event => {
-  //   event.preventDefault();
-  //   await this.setState({ posted: true });
-  //   await addComment(
-  //     this.props.article_id,
-  //     this.state.body,
-  //     this.state.username
-  //   );
-  //   this.setState({
-  //     body: ""
-  //   });
-  // };
 }
 
 export default Topics;

@@ -37,6 +37,7 @@ export class Main extends React.Component {
 
   componentDidMount = () => {
     document.addEventListener("scroll", throttle(this.scrolling, 1000));
+
     fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
       res => {
         const articles = res.data.articles;
