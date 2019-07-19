@@ -14,7 +14,12 @@ class Topics extends React.Component {
       <div className="topicPage">
         <div className="TopicSearch">
           <label>Search Topics: </label>
-          <input onChange={this.handleChange} id="search" type="text" />
+          <input
+            autoComplete="off"
+            onChange={this.handleChange}
+            id="search"
+            type="text"
+          />
         </div>
         <div className="topicSection">
           {topics

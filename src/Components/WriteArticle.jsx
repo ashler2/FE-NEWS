@@ -63,9 +63,7 @@ class WriteArticle extends Component {
       this.setState({ topics: data });
     });
   };
-  componentDidUpdate() {
-    console.log("update");
-  }
+
   handleChange = event => {
     const key = event.target.id;
     const value = event.target.value;

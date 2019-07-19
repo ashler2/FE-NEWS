@@ -3,7 +3,7 @@
 
   margin: 10px;
   padding-top: 12px;
-  padding: 2px;
+  padding: 4px;
   grid-template-columns: 0.5fr 2fr 100px;
   grid-template-rows: 0.4fr 2fr 0.4fr;
   grid-column-gap: 0px;
@@ -49,13 +49,14 @@
   grid-area: Date;
   display: flex;
   height: 25px;
-  padding: 0px;
+  padding: 4px;
+
   align-items: center;
   justify-content: center;
   width: 10em;
   text-decoration: none;
   margin: 0px;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 .Votes {
   grid-area: Votes;
