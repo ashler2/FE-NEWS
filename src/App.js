@@ -11,6 +11,9 @@ import Topics from "./Components/Topics";
 import Article from "./Components/Article";
 import WriteArticle from "./Components/WriteArticle";
 class App extends React.Component {
+  state = {
+    username: "jessjelly"
+  };
   render() {
     return (
       <main className="App">
@@ -22,7 +25,7 @@ class App extends React.Component {
           <Topics path="/topics" className="topicPage" />
           <Article path="/articles/:article_id" />
           <Main path="/topics/:topic" />
-          <WriteArticle path="/postArticle" />
+          <WriteArticle path="/postArticle" username={this.state.username} />
         </Router>
         <Footer />
       </main>

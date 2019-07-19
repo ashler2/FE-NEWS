@@ -9,7 +9,6 @@ class Topics extends React.Component {
   };
   render() {
     const topics = this.state.topics;
-    window.scrollTo(0, 0);
 
     return (
       <div className="topicPage">
@@ -50,6 +49,8 @@ class Topics extends React.Component {
     );
   }
   componentDidMount = () => {
+    window.scrollTo(0, 0);
+
     fetchTopics().then(res => {
       const topics = res.data.topics;
       this.setState({ topics });

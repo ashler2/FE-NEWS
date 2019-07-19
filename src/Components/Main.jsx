@@ -72,8 +72,6 @@ export class Main extends React.Component {
     const atBottom =
       innerHeight + scrollY >= clientHeight + distanceFromBottomToTrigger;
     let articles = this.state.articles;
-    //lodash
-    console.log(articles.length);
     if (articles.length + 1 === this.state.articleCount) {
       document.removeEventListener("scroll", this.throttleScroll);
     }
