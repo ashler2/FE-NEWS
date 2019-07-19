@@ -9,8 +9,7 @@ class WriteArticle extends Component {
     topics: []
   };
   render() {
-    console.log(this.state);
-    const { topics } = this.state;
+    const { topics, title, article } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -22,17 +21,17 @@ class WriteArticle extends Component {
             onChange={this.handleChange}
           >
             {topics.length > 0 &&
-              topics.map(topic => {
+              topics.map(({ slug }) => {
                 return (
-                  <option key={topic.slug} value={topic.slug}>
-                    {topic.slug}
+                  <option key={slug} value={slug}>
+                    {slug}
                   </option>
                 );
               })}
           </select>
           <label>Title: </label>
           <input
-            value={this.state.title}
+            value={title}
             onChange={this.handleChange}
             id="title"
             placeholder="Your title Here"
@@ -41,7 +40,7 @@ class WriteArticle extends Component {
           />
           <label>Article: </label>
           <input
-            value={this.state.article}
+            value={article}
             onChange={this.handleChange}
             id="article"
             placeholder="Your Article Here"
@@ -74,7 +73,6 @@ class WriteArticle extends Component {
   handleSubmit = event => {
     const { article, topic, title } = this.state;
     event.preventDefault();
-    console.log(this.state);
     postArticle(article, topic, this.props.username, title);
     this.setState({
       article: "",

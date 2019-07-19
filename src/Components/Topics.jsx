@@ -8,7 +8,7 @@ class Topics extends React.Component {
     search: ""
   };
   render() {
-    const topics = this.state.topics;
+    const { topics, search } = this.state;
 
     return (
       <div className="topicPage">
@@ -25,24 +25,20 @@ class Topics extends React.Component {
           {topics
             .filter(item => {
               if (
-                item.slug
-                  .toLowerCase()
-                  .includes(this.state.search.toLowerCase()) ||
-                item.description
-                  .toLowerCase()
-                  .includes(this.state.search.toLowerCase())
+                item.slug.toLowerCase().includes(search.toLowerCase()) ||
+                item.description.toLowerCase().includes(search.toLowerCase())
               ) {
                 return item;
               }
             })
-            .map(topic => {
+            .map(({ slug, description }) => {
               return (
-                <div className="" key={topic.slug}>
-                  <Link className="topicLink" to={`/topics/${topic.slug}`}>
+                <div className="" key={slug}>
+                  <Link className="topicLink" to={`/topics/${slug}`}>
                     <div className="topicCard">
-                      <p className="topicTitle">Topic: {topic.slug}</p>
+                      <p className="topicTitle">Topic: {slug}</p>
                       <p className="topicDescription">
-                        Description: {topic.description}
+                        Description: {description}
                       </p>
                     </div>
                   </Link>
@@ -56,8 +52,7 @@ class Topics extends React.Component {
   componentDidMount = () => {
     window.scrollTo(0, 0);
 
-    fetchTopics().then(res => {
-      const topics = res.data.topics;
+    fetchTopics().then(({ data: { topics } }) => {
       this.setState({ topics });
     });
   };

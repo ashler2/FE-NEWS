@@ -5,23 +5,23 @@ export class Votes extends React.Component {
     VoteChange: 0
   };
   render() {
+    const { voteChange } = this.state;
+    const { votes } = this.props;
     return (
       <div className="Votes">
         <button
           className="UpVote"
           onClick={this.upVote}
-          disabled={this.state.voteChange === 1}
+          disabled={voteChange === 1}
         >
           UP
         </button>
 
-        <p className="Votes">
-          Votes: {this.props.votes + this.state.voteChange || this.props.votes}
-        </p>
+        <p className="Votes">Votes: {votes + voteChange || votes}</p>
         <button
           className="DownVote"
           onClick={this.downVote}
-          disabled={this.state.voteChange === -1}
+          disabled={voteChange === -1}
         >
           Down
         </button>

@@ -1,7 +1,6 @@
 import React from "react";
-import { fetchArticle } from "../utils/api";
+import { fetchArticle, addComment } from "../utils/api";
 import Comments from "./Comments";
-import { addComment } from "../utils/api";
 import CommentInput from "./CommentInput";
 import moment from "moment";
 import Votes from "./Votes";

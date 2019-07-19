@@ -40,16 +40,16 @@ class Comments extends React.Component {
     );
   }
   componentDidMount() {
-    fetchComments(this.props.id).then(res => {
-      const comments = res.data.comments;
+    fetchComments(this.props.id).then(({ data: { comments } }) => {
       this.setState({ comments });
     });
   }
   sendDelete = (id, index) => {
-    if (this.state.comments[index].author === this.props.username) {
+    const comments = this.state.comments;
+
+    if (comments[index].author === this.props.username) {
       deleteComment(id);
 
-      const comments = this.state.comments;
       comments.splice(index, 1);
       this.setState({ comments });
       this.props.commentGone();
