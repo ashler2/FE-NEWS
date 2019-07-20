@@ -64,7 +64,9 @@
   grid-area: Main;
   margin: 10px;
   padding: 10px;
-  color: #950740;
+
+  display: flex;
+  align-self: center;
 }
 .Footer {
   grid-area: Footer;
