@@ -41,11 +41,7 @@ export class Main extends React.Component {
     } else {
       document.addEventListener("scroll", this.throttleScroll);
     }
-    console.log(
-      this.props.path,
-      prevProps.path,
-      "lenght" + this.state.articles.length
-    );
+
     if (this.props.path !== prevProps.path) {
       await fetchArticles(
         this.state.p,
@@ -56,8 +52,6 @@ export class Main extends React.Component {
         const articleCount = res.data.total_count;
         this.setState({ articles, articleCount, p: 0, height: 778 });
       });
-
-      console.log("why wont you work", this.state);
     }
 
     if (prevProps.topic !== this.props.topic) {
@@ -72,7 +66,6 @@ export class Main extends React.Component {
   };
 
   componentDidMount = () => {
-    console.log("mounted");
     this.setState({ topic: this.props.topic, height: 778 });
     document.addEventListener("scroll", this.throttleScroll);
 
@@ -87,8 +80,6 @@ export class Main extends React.Component {
       });
   };
   componentWillUnmount() {
-    console.log("unmounted");
-
     document.removeEventListener("scroll", this.throttleScroll);
     this.setState({ articles: [], articleCount: 0, height: 778 });
   }
@@ -118,7 +109,6 @@ export class Main extends React.Component {
     if (articles.length + 1 === this.state.articleCount) {
       document.removeEventListener("scroll", this.throttleScroll);
     }
-    console.log("hello", atBottom, distanceFromBottomToTrigger);
 
     if (atBottom) {
       this.setState({
