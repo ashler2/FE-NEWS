@@ -1,10 +1,6 @@
 import React from "react";
 
 const ErrorPage = props => {
-  console.log(props.location.state, "helawrkfjiaoegkmk");
-  // console.log(this.state, this);
-  console.log(props);
-
   return (
     <div>
       {" "}
