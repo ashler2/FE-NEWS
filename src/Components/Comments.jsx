@@ -3,6 +3,8 @@ import { fetchComments, deleteComment } from "../utils/api";
 import moment from "moment";
 import "./CSS/Comment.css";
 import Votes from "./Votes";
+import { navigate } from "@reach/router";
+
 class Comments extends React.Component {
   state = {
     comments: []
@@ -40,9 +42,13 @@ class Comments extends React.Component {
     );
   }
   componentDidMount() {
-    fetchComments(this.props.id).then(({ data: { comments } }) => {
-      this.setState({ comments });
-    });
+    fetchComments(this.props.id)
+      .then(({ data: { comments } }) => {
+        this.setState({ comments });
+      })
+      .catch(err => {
+        navigate("/error", { state: { err: 400 } });
+      });
   }
   sendDelete = (id, index) => {
     const comments = this.state.comments;

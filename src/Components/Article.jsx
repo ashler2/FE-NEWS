@@ -5,6 +5,8 @@ import CommentInput from "./CommentInput";
 import moment from "moment";
 import Votes from "./Votes";
 import "./CSS/Article.css";
+import { navigate } from "@reach/router";
+
 class Article extends React.Component {
   state = {
     article: {},
@@ -15,8 +17,6 @@ class Article extends React.Component {
     fakeBody: ""
   };
   render() {
-    window.scrollTo(0, 0);
-
     const {
       title,
       topic,
@@ -80,10 +80,14 @@ class Article extends React.Component {
     );
   }
   componentDidMount() {
-    fetchArticle(this.props.article_id).then(res => {
-      const article = res.data.article;
-      this.setState({ article });
-    });
+    fetchArticle(this.props.article_id)
+      .then(res => {
+        const article = res.data.article;
+        this.setState({ article });
+      })
+      .catch(err => {
+        navigate("/error", { state: { err: 400 } });
+      });
   }
   handleChange = event => {
     event.preventDefault();

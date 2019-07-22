@@ -14,18 +14,24 @@ const fetchArticles = async (p, topic, sort) => {
   };
 
   let { a, b } = ref[sort];
-  return await axios.get(`${URL}/articles`, {
-    params: {
-      p: value,
-      topic,
-      sort_by: a,
-      order: b
-    }
-  });
+  return await axios
+    .get(`${URL}/articles`, {
+      params: {
+        p: value,
+        topic,
+        sort_by: a,
+        order: b
+      }
+    })
+    .catch(err => {
+      return err;
+    });
 };
 
 const fetchTopics = async () => {
-  return await axios.get(`${URL}/topics`);
+  return await axios.get(`${URL}/topics`).catch(err => {
+    return err;
+  });
 };
 
 const fetchArticle = async id => {
@@ -37,25 +43,37 @@ const fetchComments = async id => {
 };
 
 const addComment = async (id, body, username) => {
-  return await axios.post(`${URL}/articles/${id}/comments`, { username, body });
+  return await axios
+    .post(`${URL}/articles/${id}/comments`, { username, body })
+    .catch(err => {
+      return err;
+    });
 };
 const deleteComment = async id => {
-  return await axios.delete(`${URL}/comments/${id}`);
+  return await axios.delete(`${URL}/comments/${id}`).catch(err => {
+    return err;
+  });
 };
 
 const patchVote = async (id, inc_votes, section) => {
-  return await axios.patch(`${URL}/${section}/${id}`, { inc_votes });
+  return await axios
+    .patch(`${URL}/${section}/${id}`, { inc_votes })
+    .catch(err => {
+      return err;
+    });
 };
 
 const postArticle = async (body, topic, author, title) => {
-  console.log(body, topic, author, title);
-  console.log({ body });
-  return await axios.post(`${URL}/articles`, {
-    title,
-    body,
-    topic,
-    author
-  });
+  return await axios
+    .post(`${URL}/articles`, {
+      title,
+      body,
+      topic,
+      author
+    })
+    .catch(err => {
+      return err;
+    });
 };
 
 export {

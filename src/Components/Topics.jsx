@@ -5,7 +5,8 @@ import "./CSS/topic.css";
 class Topics extends React.Component {
   state = {
     topics: [],
-    search: ""
+    search: "",
+    err: ""
   };
   render() {
     const { topics, search } = this.state;

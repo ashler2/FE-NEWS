@@ -26,7 +26,7 @@ class App extends React.Component {
           <Article path="/articles/:article_id" />
           <Main path="/topics/:topic" />
           <WriteArticle path="/postArticle" username={this.state.username} />
-          <ErrorPage default />
+          <ErrorPage default path="/error" />
         </Router>
         <Footer />
       </main>

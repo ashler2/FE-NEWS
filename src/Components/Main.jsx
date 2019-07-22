@@ -5,7 +5,7 @@ import ArticleCard from "./ArticleCard";
 import "./CSS/ArticleCard.css";
 import FilterBar from "./FilterBar";
 import { throttle } from "lodash";
-
+import { navigate } from "@reach/router";
 export class Main extends React.Component {
   state = {
     articles: [],
@@ -56,13 +56,15 @@ export class Main extends React.Component {
     await this.setState({ topic: this.props.topic });
     document.addEventListener("scroll", this.throttleScroll);
 
-    fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
-      res => {
+    fetchArticles(this.state.p, this.props.topic, this.state.sort_by)
+      .then(res => {
         const articles = res.data.articles;
         const articleCount = res.data.total_count;
         this.setState({ articles, articleCount });
-      }
-    );
+      })
+      .catch(err => {
+        navigate("/error");
+      });
   };
   componentWillUnmount() {
     document.removeEventListener("scroll", this.throttleScroll);
