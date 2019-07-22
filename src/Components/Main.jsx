@@ -35,7 +35,25 @@ export class Main extends React.Component {
     );
   }
 
-  componentDidMount = () => {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.articles.length + 1 === this.state.articleCount) {
+      document.removeEventListener("scroll", this.throttleScroll);
+    }
+
+    if (prevProps.topic !== this.props.topic) {
+      fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(
+        ({ data }) => {
+          const articles = data.articles;
+          const articleCount = data.total_count;
+
+          this.setState({ articles, articleCount });
+        }
+      );
+    }
+  }
+
+  componentDidMount = async () => {
+    await this.setState({ topic: this.props.topic });
     document.addEventListener("scroll", this.throttleScroll);
 
     fetchArticles(this.state.p, this.props.topic, this.state.sort_by).then(

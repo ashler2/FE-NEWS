@@ -10,6 +10,7 @@ import "./App.css";
 import Topics from "./Components/Topics";
 import Article from "./Components/Article";
 import WriteArticle from "./Components/WriteArticle";
+import ErrorPage from "./Components/ErrorPage";
 class App extends React.Component {
   state = {
     username: "jessjelly"
@@ -19,13 +20,13 @@ class App extends React.Component {
       <main className="App">
         <Heading />
         <NavBar />
-
         <Router>
           <Main path="/" className="Main" />
           <Topics path="/topics" className="topicPage" />
           <Article path="/articles/:article_id" />
           <Main path="/topics/:topic" />
           <WriteArticle path="/postArticle" username={this.state.username} />
+          <ErrorPage default />
         </Router>
         <Footer />
       </main>

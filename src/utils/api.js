@@ -14,7 +14,7 @@ const fetchArticles = async (p, topic, sort) => {
   };
 
   let { a, b } = ref[sort];
-  return await axios.get(`${URL}/articles/`, {
+  return await axios.get(`${URL}/articles`, {
     params: {
       p: value,
       topic,
