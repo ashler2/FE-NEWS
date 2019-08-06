@@ -6,6 +6,7 @@ import "./CSS/ArticleCard.css";
 import FilterBar from "./FilterBar";
 import { throttle } from "lodash";
 import { navigate } from "@reach/router";
+import loading from "../images/Spinner-1s-200px.gif";
 export class Main extends React.Component {
   state = {
     articles: [],
@@ -13,7 +14,8 @@ export class Main extends React.Component {
     height: 778,
     p: 0,
     topic: "",
-    sort_by: "DateDesc"
+    sort_by: "DateDesc",
+    isLoading: true
   };
   render() {
     const { articles, articleCount } = this.state;
@@ -22,15 +24,19 @@ export class Main extends React.Component {
       <div>
         <FilterBar setSortBy={this.setSortBy} />
         <p className="articleCount">Article count: {articleCount}</p>
-        {articles.map(article => {
-          return (
-            <ArticleCard
-              article={article}
-              key={article.article_id}
-              className="Card"
-            />
-          );
-        })}
+        {this.state.isLoading ? (
+          <img className="loading" src={loading} alt="loading" />
+        ) : (
+          articles.map(article => {
+            return (
+              <ArticleCard
+                article={article}
+                key={article.article_id}
+                className="Card"
+              />
+            );
+          })
+        )}
       </div>
     );
   }
@@ -73,7 +79,7 @@ export class Main extends React.Component {
       .then(res => {
         const articles = res.data.articles;
         const articleCount = res.data.total_count;
-        this.setState({ articles, articleCount, p: 0 });
+        this.setState({ articles, articleCount, p: 0, isLoading: false });
       })
       .catch(err => {
         navigate("/error");

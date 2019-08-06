@@ -1,6 +1,5 @@
 .WriteArticlePage {
   background: #1f2833;
-  position: relative;
   margin: 10px;
 }
 form {
@@ -41,4 +40,8 @@ select {
 }
 .submitArticle {
   grid-area: submitArticle;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
