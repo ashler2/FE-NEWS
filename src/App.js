@@ -7,6 +7,7 @@ import { Main } from "./Components/Main";
 import Footer from "./Components/Footer";
 import { Router } from "@reach/router";
 import "./App.css";
+import "./Components/CSS/WriteArticle.css";
 import Topics from "./Components/Topics";
 import Article from "./Components/Article";
 import WriteArticle from "./Components/WriteArticle";
@@ -25,7 +26,11 @@ class App extends React.Component {
           <Topics path="/topics" className="topicPage" />
           <Article path="/articles/:article_id" />
           <Main path="/topics/:topic" />
-          <WriteArticle path="/postArticle" username={this.state.username} />
+          <WriteArticle
+            path="/postArticle"
+            username={this.state.username}
+            className="WriteArticlePage"
+          />
           <ErrorPage default path="/error" />
         </Router>
         <Footer />

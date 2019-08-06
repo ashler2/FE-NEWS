@@ -14,7 +14,7 @@ export class Votes extends React.Component {
           onClick={this.upVote}
           disabled={voteChange === 1}
         >
-          UP
+          Up
         </button>
 
         <p className="Votes">Votes: {votes + voteChange || votes}</p>

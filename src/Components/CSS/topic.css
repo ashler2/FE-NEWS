@@ -7,8 +7,7 @@
   grid-template-areas:
     ". TopicSearch ."
     "topicSection topicSection topicSection";
-  height: 100vh;
-  width: auto;
+
   text-decoration: none;
 }
 .TopicSearch {

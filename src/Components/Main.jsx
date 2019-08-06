@@ -21,7 +21,7 @@ export class Main extends React.Component {
     return (
       <div>
         <FilterBar setSortBy={this.setSortBy} />
-        <p>Article count: {articleCount}</p>
+        <p className="articleCount">Article count: {articleCount}</p>
         {articles.map(article => {
           return (
             <ArticleCard
